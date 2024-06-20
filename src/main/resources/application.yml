@@ -23,8 +23,8 @@ server:
 spring:
   datasource:
     url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/myDB}
-    password: ${DATASOURCE_PASSWORD:HolaMundo}
-    username: ${DATASOURCE_USER:postgres}
+    password: ${DATASOURCE_PASSWORD}
+    username: ${DATASOURCE_USER}
     hikari:
       idle-timeout: ${IDLE_TIMEOUT:30000}
       max-lifetime: ${MAX_LIFETIME:1800000}
@@ -34,7 +34,7 @@ logging:
     rollingpolicy:
       max-history: 7
       max-file-size: 10MB
-  jpa:
+jpa:
     hibernate:
       ddl-auto: update
     properties:
@@ -43,3 +43,5 @@ logging:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: false
+postalCode:
+  apikey: ${KEY_SERVICE}
