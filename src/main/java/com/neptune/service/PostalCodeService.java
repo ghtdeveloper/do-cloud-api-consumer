@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.glassfish.jersey.client.JerseyClientBuilder;
 import org.glassfish.jersey.client.JerseyWebTarget;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 @Service
 @Slf4j
@@ -17,7 +18,8 @@ public class PostalCodeService {
 
     private Client client;
     private static final String API_URL = "https://api.tau.com.mx/dipomex/v1/codigo_postal";
-    private static final String API_KEY = "6e0224cd36265378bad6a1abb262203f4f22c812";
+    @Value("${postalCode.apikey}")
+    private String apiKey;
 
     @PostConstruct
     public void init() {
@@ -27,12 +29,12 @@ public class PostalCodeService {
     public PostalCodeResponse fetch(String postalCode) {
         JerseyWebTarget target = (JerseyWebTarget) client.target(API_URL).queryParam("cp", postalCode);
         Response response = target.request(MediaType.APPLICATION_JSON)
-                .header("APIKEY", API_KEY)
+                .header("APIKEY", apiKey)
                 .get();
         if (response.getStatus() == 200) {
             return response.readEntity(PostalCodeResponse.class);
         } else {
-            log.error("Failed to fetch data from API. Status code: " + response.getStatus());
+            log.error("Failed to fetch data from API " + response.getStatus());
             return null;
         }
     }
