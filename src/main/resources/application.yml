@@ -1,0 +1,45 @@
+api:
+  info:
+    title: do-cloud-api-consumer
+    description: Basic API for purpose technical test (ClaroRD)
+    version: v1.0
+    contact:
+      name: do-cloud-api-consumer
+      email: p/a
+      url:  p/a
+    license:
+      name: Apache 2.0
+      url: https://www.apache.org/licenses/LICENSE-2.0
+    termsOfService:  p/a
+  servers:
+    server1:
+      url: http://localhost:${local.server.port}
+      description:
+server:
+  port: ${PORT:8017}
+  error:
+    whitelabel:
+      enabled: false
+spring:
+  datasource:
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/myDB}
+    password: ${DATASOURCE_PASSWORD:HolaMundo}
+    username: ${DATASOURCE_USER:postgres}
+    hikari:
+      idle-timeout: ${IDLE_TIMEOUT:30000}
+      max-lifetime: ${MAX_LIFETIME:1800000}
+      maximum-pool-size: ${POOL_SIZE:2}
+logging:
+  logback:
+    rollingpolicy:
+      max-history: 7
+      max-file-size: 10MB
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        default_schema: core
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    show-sql: false
