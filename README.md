@@ -14,19 +14,19 @@ ________________________________________
 `1. Swagger` <br>
 ________________________________________
 
-### **Como compilar**:
+### **Como ejecutar**:
 
 Para la correcta compilación de este proyecto se deben hacer los siguientes pasos:
 
-- `mvn clean compile`
-- `mvn install`
-
-________________________________________
+- `mvn spring-boot:run`
+_______________________________________
 
 
 ### **Acceso Swagger UI**:
 
 Para acceder a la documentacion de la api a travez de swagger favor utilizar el siguiente enlance:
 [Swagger-UI](http://localhost:8017/swagger-ui/index.html#/)
+
+PD: Debe de iniciar el proyecto antes de acceder al link de swagger.
 
 ________________________________________
