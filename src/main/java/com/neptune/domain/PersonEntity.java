@@ -58,6 +58,9 @@ public class PersonEntity implements TransformFrom<CreatePersonDto,PersonEntity>
     @OneToMany(mappedBy = "personEntity", cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<AddressEntity> address;
 
+    @Transient
+    private String infoWsdl;
+
     @Override
     public PersonResponseDto toDto() {
         return PersonResponseDto.builder()
@@ -73,6 +76,7 @@ public class PersonEntity implements TransformFrom<CreatePersonDto,PersonEntity>
                 .activeStatus(this.activeStatus)
                 .phoneResponseDto(this.phones != null ? this.phones.stream().map(PhoneEntity::toDto).toList() :Collections.emptyList())
                 .addressResponseDto(this.address != null ? this.address.stream().map(AddressEntity::toDto).toList():Collections.emptyList())
+                .numberToWords(this.infoWsdl)
                 .build();
     }
 
