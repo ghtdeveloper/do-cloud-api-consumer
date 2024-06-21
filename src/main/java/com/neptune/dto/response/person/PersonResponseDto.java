@@ -27,4 +27,5 @@ public class PersonResponseDto {
     private List<AddressResponseDto> addressResponseDto;
     private List<PhoneResponseDto> phoneResponseDto;
     private LocalDate createdOn;
+    private String numberToWords;
 }

@@ -17,7 +17,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 @Slf4j
@@ -27,6 +30,7 @@ public class PersonService {
     private final AddressRepository addressRepository;
     private final PhoneRepository phoneRepository;
     private final PostalCodeService postalCodeService;
+    private final NumberConversionService numberConversionService;
 
     @Transactional
     public PersonResponseDto save(CreatePersonDto createPersonDto) {
@@ -42,8 +46,9 @@ public class PersonService {
         this.addressRepository.saveAndFlush(addressEntity);
         return savedPerson.toDto();
     }
+
     @Transactional
-    public PersonResponseDto update (UpdatePersonDto updatePersonDto){
+    public PersonResponseDto update(UpdatePersonDto updatePersonDto) {
         Optional<PersonEntity> personEntity = Optional.of(personRepository.findById(updatePersonDto.getId()).orElseThrow());
         PersonEntity person = personEntity.get();
         person.setId(updatePersonDto.getId());
@@ -51,20 +56,24 @@ public class PersonService {
         return this.personRepository.save(person).toDto();
     }
 
-    public PersonResponseDto findById(Long id){
-        log.info("test ws postalCodeService {}",  postalCodeService.fetch("39715").getPostalCode().getTown());
+    public PersonResponseDto findById(Long id) {
         PersonEntity personEntity = this.personRepository.findById(id).orElseThrow();
+        personEntity.setInfoWsdl(numberConversionService.generateNumberToWords(personEntity.getId()));
         return personEntity.toDto();
     }
 
-    public PersonCollectionResponse findAll(Integer page, Integer pageSize){
-        Page<PersonEntity> entityPage = this.personRepository.findAll(PageRequest.of(page,pageSize,Sort.by(Sort.Direction.DESC, "id")));
-        return  PersonCollectionResponse.builder()
+    public PersonCollectionResponse findAll(Integer page, Integer pageSize) {
+        Page<PersonEntity> entityPage = this.personRepository.findAll(PageRequest.of(page, pageSize, Sort.by(Sort.Direction.DESC, "id")));
+        List<PersonResponseDto> personResponseDtoList = entityPage.stream().map(personEntity -> {
+            personEntity.setInfoWsdl(numberConversionService.generateNumberToWords(personEntity.getId()));
+            return personEntity.toDto();
+        }).toList();
+        return PersonCollectionResponse.builder()
                 .page(page)
                 .page(pageSize)
-                .totalPages(entityPage.getTotalPages()-1)
+                .totalPages(entityPage.getTotalPages() - 1)
                 .totalElements(entityPage.getTotalElements())
-                .personResponseDtoList(entityPage.stream().map(PersonEntity::toDto).toList())
+                .personResponseDtoList(personResponseDtoList)
                 .build();
     }
 
