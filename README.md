@@ -11,7 +11,7 @@ _Api desarrollada  para ver informacion referente a personas utilizando spring b
 
 ________________________________________
 `i. Como compilar` <br>
-`1. Metodos (endpoints)` <br>
+`1. Swagger` <br>
 ________________________________________
 
 ### **Como compilar**:
