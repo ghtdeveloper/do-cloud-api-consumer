@@ -9,7 +9,6 @@ import jakarta.validation.constraints.Pattern;
 import lombok.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import static com.neptune.utils.RegexPattern.*;
 

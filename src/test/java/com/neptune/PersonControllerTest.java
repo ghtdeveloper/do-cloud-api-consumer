@@ -73,9 +73,10 @@ class PersonControllerTest {
     void updatePerson_ValidDtoProvided_ReturnResult() throws Exception {
         PersonResponseDto personResponseDto = new PersonResponseDto();
         personResponseDto.setId(13L);
-        personResponseDto.setFirstName("Reynaldo");
-        personResponseDto.setMaternalName("Godines");
-        personResponseDto.setMaternalName("Lopez");
+        personResponseDto.setFirstName("Jone");
+        personResponseDto.setMaternalName("HELLO");
+        personResponseDto.setPaternalName("Juan");
+
 
         Mockito.when(personService.update(ArgumentMatchers.any(UpdatePersonDto.class))).thenReturn(personResponseDto);
 
@@ -93,7 +94,7 @@ class PersonControllerTest {
     @Test
     void findPerson_ValidIdProvided_ReturnResult()throws Exception {
         PersonResponseDto personResponseDto = new PersonResponseDto();
-        personResponseDto.setId(13L);
+//        personResponseDto.setId(13L);
         personResponseDto.setFirstName("Reynaldo");
         personResponseDto.setMaternalName("Godines");
         personResponseDto.setMaternalName("Lopez");

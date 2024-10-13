@@ -2,6 +2,7 @@ package com.neptune.dto.response.person;
 
 import lombok.*;
 import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -14,4 +15,5 @@ public class PersonCollectionResponse {
     private Integer totalPages;
     private Long totalElements;
     private List<PersonResponseDto> personResponseDtoList;
+
 }

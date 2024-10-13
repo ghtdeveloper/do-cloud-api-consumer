@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.neptune.dto.response.address.AddressResponseDto;
 import com.neptune.dto.response.phone.PhoneResponseDto;
 import lombok.*;
+
 import java.time.LocalDate;
 import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Builder
-@Getter
 @Setter
+@Getter
 @ToString
 public class PersonResponseDto {
     private Long id;
@@ -28,4 +30,5 @@ public class PersonResponseDto {
     private List<PhoneResponseDto> phoneResponseDto;
     private LocalDate createdOn;
     private String numberToWords;
+
 }
