@@ -71,11 +71,8 @@ class PersonControllerTest {
 
     @Test
     void updatePerson_ValidDtoProvided_ReturnResult() throws Exception {
-        PersonResponseDto personResponseDto = new PersonResponseDto();
-        personResponseDto.setId(13L);
-        personResponseDto.setFirstName("Reynaldo");
-        personResponseDto.setMaternalName("Godines");
-        personResponseDto.setMaternalName("Lopez");
+        PersonResponseDto personResponseDto = new PersonResponseDto(13L,"Reynaldo","Godines","lopez");
+
 
         Mockito.when(personService.update(ArgumentMatchers.any(UpdatePersonDto.class))).thenReturn(personResponseDto);
 

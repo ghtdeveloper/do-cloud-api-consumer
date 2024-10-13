@@ -2,7 +2,10 @@ package com.neptune.dto.request.person;
 
 import com.neptune.utils.ActiveStatusValid;
 import lombok.*;
+
+
 import java.io.Serializable;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter

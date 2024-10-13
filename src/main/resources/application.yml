@@ -16,15 +16,15 @@ api:
       url: http://localhost:${local.server.port}
       description:
 server:
-  port: ${PORT:8017}
+  port: 300
   error:
     whitelabel:
       enabled: false
 spring:
   datasource:
-    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/myDB}
-    password: ${DATASOURCE_PASSWORD}
-    username: ${DATASOURCE_USER}
+    url: jdbc:postgresql://localhost:5432/myDB:jdbc:postgresql://localhost:5432/myDB
+    password: 1234
+    username: postgres
     hikari:
       idle-timeout: ${IDLE_TIMEOUT:30000}
       max-lifetime: ${MAX_LIFETIME:1800000}
@@ -44,4 +44,4 @@ jpa:
         format_sql: true
     show-sql: false
 postalCode:
-  apikey: ${KEY_SERVICE}
+  apikey: 6e0224cd36265378bad6a1abb262203f4f22c812
