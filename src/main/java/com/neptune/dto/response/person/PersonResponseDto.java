@@ -31,10 +31,4 @@ public class PersonResponseDto {
     private LocalDate createdOn;
     private String numberToWords;
 
-//    public PersonResponseDto(Long id, String firstName, String paternalName, String maternalName) {
-//        this.id = id;
-//        this.firstName = firstName;
-//        this.paternalName = paternalName;
-//        this.maternalName = maternalName;
-//    }
 }
