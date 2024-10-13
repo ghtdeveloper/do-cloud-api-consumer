@@ -107,8 +107,8 @@ class PersonControllerTest {
     void findAllPerson_ValidParamsProvided_ReturnResult()throws Exception{
         PersonCollectionResponse personCollectionResponse = new PersonCollectionResponse();
         personCollectionResponse.setPersonResponseDtoList(List.of(
-                new PersonResponseDto(13L,"Reynaldo","Godines","Lopez",null,null,null,null,null,null,null,null),
-                new PersonResponseDto(1L,"Joe","Doe","Fritz",null,null,null,null,null,null,null,null)
+                new PersonResponseDto(),
+                new PersonResponseDto()
         ));
         Mockito.when(personService.findAll(ArgumentMatchers.anyInt(),ArgumentMatchers.anyInt())).thenReturn(personCollectionResponse);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/api/v1.0/neptune/person/all").contentType(MediaType.APPLICATION_JSON_VALUE).param("page","0","pageSize","10");
