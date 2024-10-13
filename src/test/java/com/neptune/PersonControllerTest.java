@@ -93,7 +93,7 @@ class PersonControllerTest {
     @Test
     void findPerson_ValidIdProvided_ReturnResult()throws Exception {
         PersonResponseDto personResponseDto = new PersonResponseDto();
-        personResponseDto.setId(13L);
+//        personResponseDto.setId(13L);
         personResponseDto.setFirstName("Reynaldo");
         personResponseDto.setMaternalName("Godines");
         personResponseDto.setMaternalName("Lopez");
